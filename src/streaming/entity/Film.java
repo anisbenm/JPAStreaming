@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package streaming;
+package streaming.entity;
 
 import java.io.Serializable;
-import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,15 +17,16 @@ import javax.persistence.Id;
  * @author Administrateur
  */
 @Entity
-public class Pays implements Serializable {
+public class Film implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false,length = 32)
-    
+    @Embedded
+    private Descriptif descriptif;
+
     public Long getId() {
         return id;
     }
@@ -44,10 +45,10 @@ public class Pays implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Pays)) {
+        if (!(object instanceof Film)) {
             return false;
         }
-        Pays other = (Pays) object;
+        Film other = (Film) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -56,7 +57,7 @@ public class Pays implements Serializable {
 
     @Override
     public String toString() {
-        return "streaming.Pays[ id=" + id + " ]";
+        return "streaming.Film[ id=" + id + " ]";
     }
-    
+
 }

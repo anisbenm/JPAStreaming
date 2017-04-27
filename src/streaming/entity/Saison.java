@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package streaming;
+package streaming.entity;
 
 import java.io.Serializable;
 import javax.persistence.Column;
@@ -17,7 +17,7 @@ import javax.persistence.Id;
  * @author Administrateur
  */
 @Entity
-public class Episode implements Serializable {
+public class Saison implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -25,8 +25,9 @@ public class Episode implements Serializable {
     private Long id;
 
     @Column(nullable = false)
-    private Integer numEpisode;
-    
+    private Integer nbEpisode;
+    @Column(nullable = false)
+    private  Integer numSaison;
     
     public Long getId() {
         return id;
@@ -46,10 +47,10 @@ public class Episode implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Episode)) {
+        if (!(object instanceof Saison)) {
             return false;
         }
-        Episode other = (Episode) object;
+        Saison other = (Saison) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -58,7 +59,7 @@ public class Episode implements Serializable {
 
     @Override
     public String toString() {
-        return "streaming.Episode[ id=" + id + " ]";
+        return "streaming.Saison[ id=" + id + " ]";
     }
     
 }
