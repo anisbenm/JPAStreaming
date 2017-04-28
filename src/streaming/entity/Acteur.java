@@ -6,43 +6,31 @@
 package streaming.entity;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-import javax.persistence.Column;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 /**
  *
  * @author Administrateur
  */
 @Entity
-public class Saison implements Serializable {
+public class Acteur implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(nullable = false)
-    private Integer nbEpisode;
-    @Column(nullable = false)
-    private  Integer numSaison;
     
-    @ManyToOne
-    @JoinColumn(name = "serie_id")
-    Serie serie;
-    
-    
-   @OneToMany(mappedBy = "saison")
-    Set<Episode> episodes=new HashSet<>();
-    
+    @ManyToMany
+    @JoinTable(name = "acteur_film")
+    List<Film> films =new ArrayList<>();
     public Long getId() {
         return id;
     }
@@ -61,10 +49,10 @@ public class Saison implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Saison)) {
+        if (!(object instanceof Acteur)) {
             return false;
         }
-        Saison other = (Saison) object;
+        Acteur other = (Acteur) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -73,7 +61,7 @@ public class Saison implements Serializable {
 
     @Override
     public String toString() {
-        return "streaming.Saison[ id=" + id + " ]";
+        return "streaming.entity.Acteur[ id=" + id + " ]";
     }
     
 }

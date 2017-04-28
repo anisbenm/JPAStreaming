@@ -6,11 +6,18 @@
 package streaming.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -25,6 +32,17 @@ public class Pays implements Serializable {
     private Long id;
 
     @Column(nullable = false,length = 32)
+    private String nom;
+    
+    
+    
+    @ManyToMany
+    @JoinTable(name = "film_pays")
+    List<Film> films = new ArrayList<>();
+    
+    @ManyToMany
+    @JoinTable(name = "episode_pays")
+    Set<Episode> episodes = new HashSet<>();
     
     public Long getId() {
         return id;

@@ -17,7 +17,7 @@ public class StreamingTest {
     
     @Test
     public void test() {
-        Persistence.createEntityManagerFactory("PU").createEntityManager();
+        Persistence.createEntityManagerFactory("PU");
         
     }
     

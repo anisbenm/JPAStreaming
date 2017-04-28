@@ -8,6 +8,8 @@
     <class>streaming.entity.Film</class>
     <class>streaming.entity.Pays</class>
     <class>streaming.entity.Serie</class>
+    <class>streaming.entity.Acteur</class>
+    <class>streaming.entity.Realisateur</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/streaming"/>
       <property name="javax.persistence.jdbc.user" value="streaming"/>

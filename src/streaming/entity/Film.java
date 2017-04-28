@@ -6,11 +6,16 @@
 package streaming.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 /**
  *
@@ -27,6 +32,15 @@ public class Film implements Serializable {
     @Embedded
     private Descriptif descriptif;
 
+    @ManyToMany(mappedBy = "films")
+    List<Acteur> acteurs = new ArrayList<>();
+    
+    @ManyToMany(mappedBy = "films")
+    List<Realisateur> realisateur=new ArrayList<>();
+    
+    @ManyToMany(mappedBy = "films")
+    Set<Pays> pays=new HashSet<>();
+    
     public Long getId() {
         return id;
     }

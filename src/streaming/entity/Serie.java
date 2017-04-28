@@ -6,12 +6,15 @@
 package streaming.entity;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -29,7 +32,9 @@ public class Serie implements Serializable {
     @Column(nullable = false)
     private Integer nbSaison;
     
-
+    @OneToMany(mappedBy = "serie")
+    Set<Saison> saisons=new HashSet<>();
+    
     public Long getId() {
         return id;
     }
